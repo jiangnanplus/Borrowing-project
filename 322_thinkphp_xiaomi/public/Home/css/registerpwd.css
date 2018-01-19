@@ -1,0 +1,383 @@
+@charset "UTF-8";
+/*注册*/
+/*公共btns样式*/
+.btnadpt { width: 100%; padding: 0; line-height: 40px; text-align: center; /* font-weight:bold;*/ display: block; -webkit-box-shadow: 2px, 2px, 1px, rgba(0, 0, 0, 0.3); box-shadow: 2px, 2px, 1px, rgba(0, 0, 0, 0.3); -webkit-border-radius: 4px; -moz-border-radius: 4px; -o-border-radius: 4px; border-radius: 4px; cursor: pointer; }
+
+.bg_normal { color: #fff; }
+
+.tip_btns { padding-top: 25px; text-align: center; }
+
+.btn_tip { min-width: 100px; _width: 100px; height: 33px; margin: 0 2px; padding: 0 10px; line-height: 33px; text-align: center; -webkit-border-radius: 4px; -moz-border-radius: 4px; -o-border-radius: 4px; border-radius: 4px; /* font-weight: bold;*/ display: inline-block; vertical-align: middle; cursor: pointer; }
+
+.tip_btns a:hover { text-decoration: none; }
+
+.btn_commom { background: #ff6f3d; border: 1px solid #ff6f3d; color: #fff; }
+
+.btn_back { border: 1px solid #e8e8e8; color: #555; }
+
+.btn_tip_adapt, .btn_adapt { width: auto; padding: 0 10px; }
+
+/*---------------btn332---------------------------------*/
+.btn332 { width: 330px; height: 42px; margin: 0 auto; line-height: 42px; text-align: center; font-size: 14px; /* font-weight:bold;*/ display: block; cursor: pointer; border: 1px solid #e8e8e8; -webkit-border-radius: 4px; -moz-border-radius: 4px; -o-border-radius: 4px; border-radius: 4px; }
+
+.btn_reg_1 { background-color: #ff6f3d; margin-top: 15px; border: 1px solid rgba(186, 186, 186, 0.3); *border: 0 none; color: #fff; }
+
+.btn_reg_1:hover { background: #ff936a; }
+
+.btn_reg_2 { background: #fff; margin-top: 10px; border: 1px solid #ddd; color: #7c7c7c; }
+
+.btn_reg_2:hover { color: #333; }
+
+/*disabled*/
+.disabled { color: #FFA98B !important; cursor: default !important; }
+
+@media only screen and (max-width: 770px) { .btnadpt { -webkit-border-radius: 20px/20px 20px 21px 21px !important; -moz-border-radius: 20px/20px 20px 21px 21px !important; -o-border-radius: 20px/20px 20px 21px 21px !important; border-radius: 20px/20px 20px 21px 21px !important; }
+  .bg_normal { background-color: #51c422; }
+  .bg_white { background: #fff; border: 1px solid #ddd; color: #333 !important; }
+  .tip_btns { width: 100%; height: auto; padding: 25px 20px 0; -webkit-box-sizing: border-box; box-sizing: border-box; }
+  /*---------------btn332---------------------------------*/
+  .btn332, .btn_tip { width: 100%; height: 40px; line-height: 40px; text-align: center; -webkit-border-radius: 20px/20px 20px 21px 21px; -moz-border-radius: 20px/20px 20px 21px 21px; -o-border-radius: 20px/20px 20px 21px 21px; border-radius: 20px/20px 20px 21px 21px; font-size: 1.6rem; }
+  .btn_tip { margin: 0; -webkit-box-sizing: border-box; box-sizing: border-box; }
+  .btn_reg_1, .btn_commom { color: #fff !important; }
+  .btn_reg_1, .btn_reg_1:hover, .btn_commom { background-color: #51c422; }
+  .btn_reg_2, .btn_back { background: #fff; color: #333 !important; }
+  .btn_commom { border: 1px solid rgba(186, 186, 186, 0.3); }
+  .btn_back { margin-top: 10px; }
+  /*disabled*/
+  .disabled { background-color: #94d978 !important; color: rgba(255, 255, 255, 0.3) !important; } }
+.listwrap { padding-bottom: 15px; position: relative; }
+
+.tits { height: 40px; padding-left: 14px; line-height: 40px; display: inline-block; vertical-align: middle; border: 1px solid #e8e8e8; -webkit-border-radius: 4px; -moz-border-radius: 4px; -o-border-radius: 4px; border-radius: 4px; color: #555; cursor: pointer; }
+.tits tt { float: left; width: 275px; border-right: 1px solid #e8e8e8; cursor: pointer; }
+
+.icon_cirarr { float: right; background: url(https://account.xiaomi.com/static/res/0eeaaed/passport/oauth/images/icon_user.png); width: 16px; height: 16px; margin: 11px 12px 0 12px; }
+
+/*下拉框*/
+.country-container { width: 330px; background: #fff; height: 168px; line-height: 30px; border: 1px solid #e8e8e8; overflow-x: hidden; overflow-y: auto; position: absolute; left: 0; top: 41px; z-index: 98; display: none; }
+
+#select_country_code { float: right; cursor: pointer; }
+
+.btn_commom_cancel { display: none; }
+
+.country-code .header { background: #eaeaea; padding-left: 10px; }
+.country-code .record { padding: 0 10px; clear: both; overflow: hidden; cursor: pointer; }
+.country-code .record:hover { background: #eaeaea; }
+.country-code .record span { height: 30px; overflow: hidden; }
+.country-code .record-country { float: left; max-width: 74%; cursor: pointer; }
+.country-code .record-code { float: right; max-width: 20%; }
+
+/*隐藏下拉框btn*/
+.fixed_countrycode { display: none; }
+
+/*------------------@media 登录页面国家码入口浮层--------------------------------*/
+@media only screen and (max-width: 770px) { .select_country_code_content { width: 100% !important; height: 100% !important; border: none !important; padding: 0 !important; }
+  .btn_commom_cancel { background: #efefef; color: #666 !important; border: 1px solid rgba(186, 186, 186, 0.3); }
+  .dis_box { display: -webkit-box !important; display: box !important; }
+  html, body { height: 100%; }
+  html { font-size: 62.5%; }
+  .tits { -webkit-box-pack: justify; box-pack: justify; border: 1px solid rgba(0, 0, 0, 0.3); -webkit-border-radius: 8px; -moz-border-radius: 8px; -o-border-radius: 8px; border-radius: 8px; }
+  .tits tt { width: auto; border-right: 1px solid rgba(0, 0, 0, 0.3); -webkit-box-flex: 1; box-flex: 1; }
+  .tits tt, .icon_cirarr { float: none; display: block; }
+  .icon_cirarr { background: none; border: 1px solid rgba(0, 0, 0, 0.3); -webkit-border-radius: 50%; -moz-border-radius: 50%; -o-border-radius: 50%; border-radius: 50%; position: relative; }
+  .icon_cirarr:after { content: ""; width: 4px; height: 4px; border-width: 1px; border-style: solid; border-color: transparent transparent rgba(0, 0, 0, 0.3) rgba(0, 0, 0, 0.3); -webkit-transform: rotate(-45deg); transform: rotate(-45deg); position: absolute; left: 5px; top: 4px; }
+  /*-------------------country-container-------------------*/
+  .listwrap { position: static; }
+  .country-container { width: 100%; height: 100% !important; top: 0; font-size: 1.6rem; -webkit-box-sizing: border-box; box-sizing: border-box; }
+  .country-code { height: 100%; overflow: auto; }
+  .country-code .header { line-height: 40px; color: #333; font-weight: bold; }
+  .country-code .record { padding: 0 20px; border-bottom: 1px solid #e8e8e8; }
+  .fixed_countrycode { display: block; height: 100px; display: -webkit-box !important; display: box !important; -webkit-box-align: center; box-align: center; } }
+.mod_acc_tip input { display: inline-block; vertical-align: middle; }
+
+/*-----------------new login--------------------------*/
+.modal_container { position: absolute; top: 0; left: 0; z-index: 100; width: 100%; height: 100%; }
+
+.modal_msk { background: #000; width: 100%; height: 100%; opacity: 0.4; filter: alpha(opacity=40); position: absolute; left: 0; top: 0; }
+
+.modal_tip { background: #fff; margin: 0 auto; padding: 0 14px; line-height: 30px; border: #838383 solid 6px; border: #d1d1d1 \9 solid 6px; -webkit-border-radius: 5px; -moz-border-radius: 5px; -o-border-radius: 5px; border-radius: 5px; color: #666; position: absolute; }
+
+:root .modal_tip { border: 6px solid #838383; }
+
+.modal_tip_hd { height: 42px; padding-top: 13px; line-height: 42px; border-bottom: 1px solid #e6e6e6; position: relative; }
+
+.modal_tip_title { color: #1e1e1e; font-size: 15px; font-weight: bold; padding: 0 20px; }
+
+.modal_tip_close { width: 8px; height: 8px; overflow: hidden; position: absolute; top: 14px; right: 0; background: url("https://account.xiaomi.com/static/res/6eee68a/passport/HtmlResource/cssSass/images/icon_tip.png"); }
+
+.mod_acc_tip { background: #fff; width: 412px; height: auto; padding: 0 14px 30px; line-height: 20px; border: #838383 solid 6px; border: #d1d1d1 \9 solid 6px; -webkit-border-radius: 5px; -moz-border-radius: 5px; -o-border-radius: 5px; border-radius: 5px; color: #666; position: relative; z-index: 4; }
+
+.mod_acc_tip input { border: 0 none; }
+
+.mod_tip_hd { height: 42px; padding-top: 13px; line-height: 42px; border-bottom: 1px solid #e6e6e6; position: relative; }
+
+.mod_tip_hd h4 { font-size: 15px; color: #1e1e1e; }
+
+.btn_mod_close { width: 22px; height: 22px; overflow: hidden; position: absolute; top: 7px; right: -7px; background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QzNFMjE1NzM2QkQwMTFFNEJFNkE4OUZCNzE1NkM1NTUiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QzNFMjE1NzQ2QkQwMTFFNEJFNkE4OUZCNzE1NkM1NTUiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpDM0UyMTU3MTZCRDAxMUU0QkU2QTg5RkI3MTU2QzU1NSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpDM0UyMTU3MjZCRDAxMUU0QkU2QTg5RkI3MTU2QzU1NSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PjYX3K8AAAA+SURBVHjaYjxz5sx/BghgZEAFYHEmdAF0NhOazv9oChmZcBgPF2NiIACYsNiP4cj/aMaiuIkJ3U50NkCAAQB+HAxztK/g2QAAAABJRU5ErkJggg==); background-repeat: no-repeat; background-position: center; _background: none; _filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale, src="https://account.xiaomi.com/static/res/6a9aa2d/passport/acc-2014/img/n_close.png"); _cursor: pointer; }
+
+/*简体下提示文案隐藏*/
+.zh_CN .nl-phone-tip { display: none; }
+
+.regbox { width: 332px; margin: 0 auto; padding: 40px 0; line-height: 20px; }
+
+/*------------------@media 登录页面国家码入口浮层--------------------------------*/
+@media only screen and (max-width: 770px) { html, body { height: 100%; }
+  html { font-size: 62.5%; }
+  /*外框*/
+  .btn_mod_close { display: none; }
+  .mod_acc_tip { background: #f9f9f9; width: 100%; min-height: 100%; height: 100% !important; padding: 0; border: 0 none; -webkit-border-radius: 0; -moz-border-radius: 0; -o-border-radius: 0; border-radius: 0; }
+  .mod_tip_hd h4 { padding: 0 20px; }
+  .regbox { width: 100%; font-size: 1.4rem; padding: 40px 20px; -webkit-box-sizing: border-box; box-sizing: border-box; }
+  /*公共btns样式*/
+  .tip_btns { padding: 0 20px; }
+  .btn_tip { width: 100%; height: 40px; margin: 0; line-height: 40px; text-align: center; border-radius: 20px/20px 20px 21px 21px; font-size: 1.6rem; display: block; -webkit-box-sizing: border-box; box-sizing: border-box; }
+  .btn_commom { background: #51c422; border: 1px solid rgba(186, 186, 186, 0.3); color: #fff !important; } }
+/*------------------------var--------------------------------*/
+.msg em { color: #555; }
+
+.country-code .record-country { float: left; }
+
+.country-code .record-code { float: right; }
+
+.wthadpt, .apfooter { width: 100%; }
+
+.mauto, .regbox { margin: 0 auto; }
+
+.pt0 { padding-top: 0; }
+
+.pt45 { padding-top: 45px; }
+
+.pb10 { padding-bottom: 10px; }
+
+.pb15, .inputbg { padding-bottom: 15px; }
+
+.pb35 { padding-bottom: 35px; }
+
+.pl10, .listbox h6, .country-code .header, .listbox p { padding-left: 10px; }
+
+.bg_eae, .listbox h6, .country-code .header, .country-code .record:hover, .listbox p:hover, .chk { background: #eaeaea; }
+
+.ft14, .regbox h4, .n_succ h4, .acc_conversion { font-size: 14px; }
+
+.ft12 { font-size: 12px; }
+
+.ftbold, .msg em, .msg a { font-weight: bold; }
+
+.color_ff6 { color: #ff6f3d; }
+
+.color_c5c { color: #c5c5c5; }
+
+.dis_block, .pwd_tip, .qst_txt, .apregbox { display: block; }
+
+.dis_inl { display: inline-block; }
+
+.dis_n, .listbox, .pwd_tip .icon_error, .app_succ_img, .ap_n_loss { display: none; }
+
+.dis_inl_vt_mid { display: inline-block; vertical-align: middle; }
+
+.inputcode .disabled, .n_loss .disabled { background: none !important; color: #9d9d9d !important; cursor: default !important; }
+
+/*------------------------var end--------------------------------*/
+body { overflow-y: auto; }
+
+.dis_bot35 { padding-bottom: 35px; }
+
+/*图片*/
+.acctip_icon { background: url(https://account.xiaomi.com/static/res/6eee68a/passport/HtmlResource/cssSass/images/icon_tip.png); _background: url(https://account.xiaomi.com/static/res/6eee68a/passport/HtmlResource/cssSass/images/icon_tip_ie6.png); }
+
+.acctip_icon_3 { background-position: -13px -15px; width: 14px; height: 14px; margin-right: 5px; margin-top: -3px; *margin-top: 0px; overflow: hidden; display: inline-block; vertical-align: middle; }
+
+.succ_emptacc, .succ_smile { width: 68px; height: 68px; margin: 58px auto 14px; }
+
+.succ_emptacc { background: url(https://account.xiaomi.com/static/res/3a9caeb/passport/acc-2014/img/submit_emptacc.png); background: -webkit-image-set(url(https://account.xiaomi.com/static/res/3a9caeb/passport/acc-2014/img/submit_emptacc.png) 1x, url(https://account.xiaomi.com/static/res/3a9caeb/passport/acc-2014/img/submit_emptacc@2x.png) 2x); }
+
+.succ_smile { background: url(https://account.xiaomi.com/static/res/7be57b8/passport/acc-2014/img/succ.jpg); }
+
+.regbox { width: 332px; padding: 30px 0; line-height: 20px; }
+.regbox .tit_normal { padding-bottom: 5px; color: #333; font-weight: normal; }
+
+.emailregbox { padding-top: 45px; }
+
+.msg a { color: #333; }
+
+.tits { *width: 316px; }
+
+.listbox { width: 330px; background: #fff; height: 168px; line-height: 30px; overflow-x: hidden; overflow-y: auto; position: absolute; left: 0; top: 41px; z-index: 98; }
+
+.country-code .record { padding: 0 10px; cursor: pointer; clear: both; overflow: hidden; *zoom: 1; }
+.country-code .record span { height: 30px; overflow: hidden; }
+.country-code .record-country { max-width: 74%; }
+.country-code .record-code { max-width: 20%; }
+
+.inputbg input { width: 310px; height: 20px; line-height: 20px; }
+
+.err_tip { margin-top: -8px; }
+
+.pwd_tip { color: #555; }
+
+.col_54a { color: #54aa35; }
+
+.inputcode .code { width: 170px; *width: 175px; }
+.inputcode .resendcode { width: 170px; max-width: 180px; width: 165px\9; }
+.inputcode .labelbox { *vertical-align: middle; }
+
+.zh_CN .inputcode .resendcode { width: 190px; width: 185px\9; max-width: 260px; }
+
+.zh_TW .inputcode .resendcode { width: 190px; width: 185px\9; max-width: 260px; }
+
+.remain { margin-left: 8px; vertical-align: middle; display: inline-block; height: 40px; line-height: 40px; /* margin-bottom:6px;*/ border: 1px solid #e8e8e8; -webkit-border-radius: 4px; -moz-border-radius: 4px; -o-border-radius: 4px; border-radius: 4px; }
+.remain a { color: #000; cursor: pointer; padding: 0px 10px; display: block; }
+
+.msg { margin-top: 10px; color: #9d9d9d; }
+.msg em { font-style: normal; }
+
+.other_register_area { padding-bottom: 20px; border-top: 1px solid #e6e6e6; }
+
+.step2 { padding-top: 20px; }
+.step2 .step2_txt { padding-bottom: 15px; }
+.step2 .step2_txt p { padding-bottom: 10px; }
+
+.qst_txt { margin-top: 10px; }
+
+.step3 dt { margin: 15px 0; }
+
+.n_succ img { margin: 58px 0 14px; }
+
+.n_succ input { margin: 45px auto 0; }
+
+.mailbox { padding-top: 74px; }
+
+.hintro { padding: 15px 0; line-height: 28px; }
+
+.n_loss { margin-left: -5px; padding-top: 10px; }
+.n_loss a { margin: 0 5px; color: #333; text-decoration: underline; }
+
+/*wrap page*/
+.apregbox { padding: 17px 20px 0; border-top: 1px solid #adadad; }
+.apregbox .alink { margin: 10px 0 24px; }
+.apregbox .alink a { color: #707070; }
+.apregbox .alink a:first-child { margin-right: 15px; }
+.apregbox .alink a:last-child { margin-left: 15px; }
+
+.btn_1 { background-color: #51c422; }
+
+.apfooter { /* position:fixed; left:0; bottom:20px;*/ }
+.apfooter a { margin: 0 14px; color: #707070; }
+.apfooter .now { color: #c5c5c5; }
+
+/*重置密码*/
+.n_tit_msg { margin: 10px 0 20px; }
+
+/*身份验证*/
+.verlistbox { padding-top: 15px; }
+
+.icon_noverify { background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QzRBNDZDMUE2OTdDMTFFNDlBMDVFNUNDRjg5RDAxOTgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QzRBNDZDMUI2OTdDMTFFNDlBMDVFNUNDRjg5RDAxOTgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpDNEE0NkMxODY5N0MxMUU0OUEwNUU1Q0NGODlEMDE5OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpDNEE0NkMxOTY5N0MxMUU0OUEwNUU1Q0NGODlEMDE5OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PhqQhjcAAAFhSURBVHjafJJJb8JADIXJMCxCSpAIlEXigBIJDlz5/7+CQ7gQiU1CLEKELSzqR91O07TlHUYe+9ljv7G+3W6ZL+z3++Vyyfl4PLgqpWzbrlar5XLZcCxJgDEej3e7XeYvkNbpdLTWnwmwgyA4nU6Z/1EsFrvdbjabfSaEYbjZbCSAq91uVyoVjPv9jn8ymWAQojHP8/TxeDRsgIsAvTEJndRqtXw+PxqNCOE8HA5qtVoZNlVh44WxWCyEl5x4vV7rKIrMnbGm0+n5fJar4zic0o+RUV+vV3O/XC4UFrtUKvm+j4F6hhDHsUbsZA1BoVDo9XoYw+GQIY0fssrlcr9FRCXO2WyWZAMEUNJoCswtHaf8kC3+i3dlF17Dsqx+v/9sqdVqpWLNZnMwGKQebzQakBXW2wdel3ddlyrfywf4wfl8nlxe85vUrtfrP7ZVgL7b7ZYVQG/RhO1AMdlTwbsAAwBAfrnXYxTjjQAAAABJRU5ErkJggg==); background-repeat: no-repeat; width: 16px; height: 16px; margin-right: 5px; overflow: hidden; }
+
+.noverify { padding: 20px 0; }
+
+.regbox hgroup { line-height: 26px; }
+
+/*-----------------------非安全登录帐号转化----------------------------*/
+.othway { padding-top: 60px; }
+
+.icon_conversion { background-image: url(https://account.xiaomi.com/static/res/b0b956a/passport/acc-2014/img/alert.png); background-image: -webkit-image-set(url(https://account.xiaomi.com/static/res/b0b956a/passport/acc-2014/img/alert.png) 1x, url(https://account.xiaomi.com/static/res/b0b956a/passport/acc-2014/img/alert@2x.png) 2x); background-repeat: no-repeat; width: 46px; height: 46px; display: none; }
+
+/*-----------------------非安全登录帐号转化 end----------------------------*/
+/*-----------------------审核结果重置密码----------------------------------*/
+.timeout { padding-top: 30px; line-height: 30px; text-align: center; font-size: 14px; }
+
+.mar_reset { margin-top: 50px; }
+
+/*-----------------------审核结果重置密码 end------------------------------*/
+/*帐号回收注册*/
+.regagabox { padding-bottom: 30px; }
+
+.confirm_box { padding-bottom: 10px; font-size: 14px; color: #333; }
+
+.single_imgarea { text-align: center; }
+.single_imgarea .us_name { padding-top: 10px; }
+
+.confirm_con { padding-top: 15px; }
+.confirm_con .txt { padding-bottom: 5px; }
+
+.reg_again_txt { display: none; }
+
+/*裸号升级*/
+/*各版本语言*/
+.in_ID .inputcode .code { width: 170px; *width: 175px; }
+.in_ID .inputcode .resendcode { width: 130px; }
+
+/*bug fix集合*/
+.phone_step2 .err_tip { margin-bottom: 10px; }
+
+@media screen and (orientation: portrait) { .apfooter { width: 100%; position: absolute; left: 0; bottom: 20px; } }
+@media only screen and (max-width: 770px) { html { -webkit-text-size-adjust: 100%; font-size: 62.5%; }
+  body { font-size: 1.4rem; overflow-y: auto; }
+  .dis_none, .n-footer, .n-main-nav, .logout { display: none; }
+  .dis_pc_none { display: block; }
+  .dis_vcenter { -webkit-box-align: center; box-align: center; }
+  .box_center { display: box; display: -webkit-box; -webkit-box-align: center; box-align: center; -webkit-box-pack: center; box-pack: center; }
+  .layout { width: 100%; min-height: 400px; }
+  .n-frame { background: #f9f9f9; padding: 0; border: 0 none; border-radius: 0; }
+  .dis_box { display: -webkit-box !important; display: box !important; }
+  .dis_box_normal { display: -webkit-box; display: box; }
+  /*disabled*/
+  .disabled { background-color: #94d978 !important; color: rgba(255, 255, 255, 0.3) !important; } }
+@media only screen and (max-width: 770px) { .inputbg, .inputbg input, .inputcode .resendcode, .inputcode .code, .regbox, .n_succ { width: 100%; }
+  .step2 p { font-size: 14px; }
+  .ap_n_loss, .inputbg input, .icon_noverify, .noverify a, .inputcode img, .inputcode a, .icon_error, .err_tip span { display: block; }
+  .ap_n_loss a { color: #ff6f3d; }
+  .app_succ_img { display: inline-block; }
+  /*图片*/
+  .succ_smile { width: 81px; height: 81px; background: -webkit-image-set(url(https://account.xiaomi.com/static/res/bb171d8/passport/acc-2014/img/succ.png) 1x, url(https://account.xiaomi.com/static/res/7be57b8/passport/acc-2014/img/succ@2x.png) 2x); }
+  .listbox { border: 1px solid rgba(0, 0, 0, 0.3); border-radius: 8px; }
+  .inputbg input { height: 40px; margin-top: 0; line-height: normal; -webkit-box-sizing: border-box; box-sizing: border-box; }
+  .remain { background: #fff; display: block; border: 1px solid rgba(0, 0, 0, 0.3); }
+  .title-big { font-size: 1.6rem; }
+  .dis_bot35 .title-big { font-weight: normal; }
+  .dis_bot35 { padding: 23px 0 20px; }
+  .title-item { border-bottom: 0 none; }
+  .regbox { font-size: 1.4rem; padding: 0 20px; -webkit-box-sizing: border-box; box-sizing: border-box; }
+  .regbox h4 { font-size: 1.4rem; font-weight: normal; }
+  .reg_tit_critical { font-size: 16px; }
+  .n_succ { padding: 0 20px; -webkit-box-sizing: border-box; box-sizing: border-box; }
+  .emailregbox { padding-top: 0; }
+  .n_tit h4, .title_shadow { -webkit-text-shadow: 2px 1px 1px rgba(0, 0, 0, 0.3); text-shadow: 2px 1px 1px rgba(0, 0, 0, 0.3); }
+  .listbox, .country-container { background: #f9f9f9; }
+  .inputcode { -webkit-box-align: center; box-align: center; }
+  .inputcode label { -webkit-box-flex: 1; box-flex: 1; }
+  .inputcode .wap_resend_label { width: 54%; }
+  .disent1 { margin-top: 90px; }
+  .step2 { padding-top: 8px; }
+  .step2 p { padding-bottom: 18px; }
+  .step3 dt { margin: 15px 0 20px 0; }
+  .hintro { background-color: #f3f3f4; padding: 15px 10px; border: 1px solid #d5d5d5; border-radius: 6px; }
+  .ap_n_loss { padding-top: 5px; }
+  .other_register_area { padding-top: 10px; }
+  .reg_frame { min-height: 0; }
+  .err_tip span { -webkit-box-flex: 1; box-flex: 1; }
+  /*固定位置*/
+  .fixed_bot { padding-top: 30px; padding-bottom: 10px; }
+  .pt0 { padding-top: 0; }
+  /*-----------------------非安全登录帐号转化----------------------------*/
+  .icon_conversion { display: inline-block; }
+  /*-----------------------非安全登录帐号转化 end----------------------------*/
+  /*-----------------------审核结果重置密码----------------------------------*/
+  .timeout { padding-left: 10px; text-align: left; }
+  /*-----------------------审核结果重置密码 end------------------------------*/
+  /*重置密码wap添加注册入口链接*/
+  .reg_again_txt { padding-top: 10px; display: block; }
+  .reg_again_txt p { padding-top: 5px; }
+  .reg_again_txt a { font-weight: bold; } }
+.login_countrycode_box { padding: 40px 0; }
+
+/*下拉框*/
+#select_country_code { float: right; cursor: pointer; }
+
+.btn_commom_cancel { display: none; }
+
+/*隐藏下拉框btn*/
+.fixed_countrycode { display: none; }
+
+/*------------------@media 登录页面国家码入口浮层--------------------------------*/
+@media only screen and (max-width: 770px) { .btn_commom_cancel { background: #efefef; color: #666 !important; border: 1px solid rgba(186, 186, 186, 0.3); display: block; }
+  .login_countrycode_box { padding: 40px 20px; } }

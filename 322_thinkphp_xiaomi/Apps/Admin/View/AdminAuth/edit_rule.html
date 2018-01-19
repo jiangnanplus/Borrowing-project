@@ -1,0 +1,86 @@
+<extend name="AdminAuth:add" />
+<block name="title">
+	<title>规则修改</title>
+</block>
+<block name=css>
+<!-- Plugin Stylesheets first to ease overrides -->
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/plugins/colorpicker/colorpicker.css" media="screen">
+
+<!-- Required Stylesheets -->
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/bootstrap/css/bootstrap.min.css" media="screen">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/css/fonts/ptsans/stylesheet.css" media="screen">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/css/fonts/icomoon/style.css" media="screen">
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/css/mws-style.css" media="screen">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/css/icons/icol16.css" media="screen">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/css/icons/icol32.css" media="screen">
+
+<!-- Demo Stylesheet -->
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/css/demo.css" media="screen">
+
+<!-- jQuery-UI Stylesheet -->
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/jui/css/jquery.ui.all.css" media="screen">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/jui/jquery-ui.custom.css" media="screen">
+
+<!-- Theme Stylesheet -->
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/css/mws-theme.css" media="screen">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/css/themer.css" media="screen">
+</block>
+<block name="con">
+    <!-- 规则修改start -->
+	<div class="mws-panel grid_8">
+        <div class="mws-panel-header">
+            <span>规则修改</span>
+        </div>
+        <div class="mws-panel-body no-padding">
+            <form class="mws-form" action="{:U('Admin/AdminAuth/update_rule')}" method="post">
+                <div class="mws-form-inline">
+                    <div class="mws-form-row">
+                        <div class="phone">
+                            <label class="mws-form-label" style="width:80px;margin-left:60px">规则标识 :</label>
+                            <div class="mws-form-item">
+                                <input type="text" class="small" name="name" value="{$ruleInfo['name']}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mws-form-row">
+                        <label class="mws-form-label" style="width:80px;margin-left:60px">规则名称 :</label>
+                        <div class="mws-form-item">
+                            <input type="text" class="small" name="title" value="{$ruleInfo['title']}">
+                        </div>
+                    </div>
+                    <div class="mws-form-row">
+                        <label class="mws-form-label" style="width:80px;margin-left:60px">认证方式 :</label>
+                        <div class="mws-form-item clearfix">
+                            <ul class="mws-form-list inline">
+                                <li><input type="radio" name="type" value="1" {$ruleInfo['type'] ? "checked='checked'" : ''}> <label>实时认证</label></li>
+                                <li><input type="radio" name="type" value="0" {$ruleInfo['type'] ? '' : "checked='checked'"}> <label>登录认证</label></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="mws-form-row">
+                        <label class="mws-form-label" style="width:80px;margin-left:60px">状&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;态 :</label>
+                        <div class="mws-form-item clearfix">
+                            <ul class="mws-form-list inline">
+                                <li><input type="radio" name="status" value="1" {$ruleInfo['status'] ? "checked='checked'" : ''}> <label>启用</label></li>
+                                <li><input type="radio" name="status" value="0" {$ruleInfo['status'] ? '' : "checked='checked'"}> <label>禁用</label></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="mws-form-row">
+                        <label class="mws-form-label" style="width:80px;margin-left:60px">规则表达式 :</label>
+                        <div class="mws-form-item">
+                            <input type="text" class="small" name="condition" value="{$ruleInfo['condition']}">
+                        </div>
+                    </div>
+                </div>
+                <div class="mws-button-row">
+            		<input type="hidden" name="id" value="{$ruleInfo['id']}">
+                    <input type="submit" value="修改" class="btn btn-danger" style="margin-left:60px">
+                    <input type="reset" value="重置" class="btn ">
+                </div>
+            </form>
+        </div>      
+    </div>
+    <!-- 规则修改end -->
+</block>

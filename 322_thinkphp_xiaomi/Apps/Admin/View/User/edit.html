@@ -1,0 +1,76 @@
+<extend name="add"/>
+<block name="title">
+    <title>用户修改</title>
+</block>
+ <block name="con">
+            	<div class="mws-panel grid_8">
+                	<div class="mws-panel-header">
+                    	<span>用户添加</span>
+                    </div>
+                    <div class="mws-panel-body no-padding">
+                    	<form class="mws-form" action="{:U('Admin/User/update')}" method="post">
+                    		<input type="hidden" name="id" value="{$userInfo['id']}">
+                    		<div class="mws-form-inline">
+                                <div class="mws-form-row">
+                                    <div class="phone">
+                                        <label class="mws-form-label" style="width:80px;margin-left:60px">米号 :</label>
+                                        <div class="mws-form-item">
+                                            {$userInfo['ssid']}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mws-form-row">
+                                    <label class="mws-form-label" style="width:80px;margin-left:60px">手机 :</label>
+                                    <div class="mws-form-item">
+                                            <input type="text" class="small" name="phone" value="{$userInfo['phone']}">
+                                    </div>
+                                </div>
+                                <div class="mws-form-row">
+                                    <label class="mws-form-label" style="width:80px;margin-left:60px">邮箱 :</label>
+                                    <div class="mws-form-item">
+                                        <input type="text" class="small" name="email" value="{$userInfo['email']}">
+                                    </div>
+                                </div>
+                                <neq name="userInfo['name']" value="">
+                                    <div class="mws-form-row">
+                                        <label class="mws-form-label" style="width:80px;margin-left:60px">姓名 :</label>
+                                        <div class="mws-form-item">
+                                            <input type="text" class="small" name="name" value="{$userInfo['name']}">
+                                        </div>
+                                    </div>
+                                </neq>
+                                <div class="mws-form-row">
+                                    <label class="mws-form-label" style="width:80px;margin-left:60px">密码 :</label>
+                                    <div class="mws-form-item">
+                                        <input type="password" class="small" name="password" value="{$userInfo['password']}">
+                                    </div>
+                                </div>
+                                <neq name="userInfo['sex']" value="">
+                                    <div class="mws-form-row">
+                                        <label class="mws-form-label" style="width:80px;margin-left:60px">性别 :</label>
+                                        <div class="mws-form-item clearfix">
+                                            <ul class="mws-form-list inline">
+                                                <li><input type="radio" name="sex" value="1" {$userInfo['sex'] ? "checked='checked'" : ''}  > <label>男</label></li>
+                                                <li><input type="radio" name="sex" value="0" {$userInfo['sex'] ? '' : "checked='checked'"} > <label>女</label></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </neq>
+                                <div class="mws-form-row">
+                                    <label class="mws-form-label" style="width:80px;margin-left:60px">状态 :</label>
+                                    <div class="mws-form-item clearfix">
+                                        <ul class="mws-form-list inline">
+                                            <li><input type="radio" name="status" value="1" {$userInfo['status'] ? "checked='checked'" : ''}> <label>启用</label></li>
+                                            <li><input type="radio" name="status" value="0" {$userInfo['status'] ? '' : "checked='checked'" }> <label>禁用</label></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                    		</div>
+                    		<div class="mws-button-row">
+                    			<input type="submit" value="修改" class="btn btn-danger" style="margin-left:60px">
+                    			<input type="reset" value="重置" class="btn ">
+                    		</div>
+                    	</form>
+                    </div>    	
+                </div>
+            </block>

@@ -1,0 +1,114 @@
+<extend name="Index:index" />
+{//title及样式表的引用}
+<block name="title">
+	<title>订单支付</title>
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/base.css" type="text/css">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/buyConfirm.css" type="text/css">
+</block>
+
+{//头部的引用}
+<block name="logo">
+	<!--logo-->
+	<div class="site-header site-mini-header container">
+		<div class="span4">
+			<div class="site-logo">
+			<a class="logo " title="小米官网" href="{:U('Home/Index/index')}">
+			</a>
+			</div>
+		</div>
+	</div>
+	<!--logo-->
+</block>
+
+{//内容引入}
+<block name="content">
+	<!--内容开始-->
+	<div class="container payment-con">
+		<form id="pay-form" method="post" action="{:U('Home/Payment/index')}" target="">
+			<div class="order-info">
+				<div class="msg">
+					<h3>您的订单已提交成功！付款咯～</h3>
+					<p></p>
+					<p class="post-date">成功付款后，7天发货</p>
+				</div>
+				<div class="info">
+					<p>
+					金额：
+					<span class="pay-total">{$order_info.money}</span>
+					</p>
+					<p> 订单：{$order_info.onumber} </p>
+					<p>
+					配送：{$address_info['consignee']}
+					<span class="line">/</span> 
+					{$address_info['telephone']}  
+					<span class="line">/</span>
+					{$arr[$address_info['province']]},{$address_info['site']}
+					<span class="line">/</span>
+					<switch name="order_info['posttime']"> 
+					<case value="1">不限送货时间</case>
+					<case value="2">工作日送货</case>
+					<case value="3">双休日假日送货</case>
+					</switch>
+					<span class="line">/</span>
+					<switch name="order_info['invoice']"> 
+					<case value="1">电子发票（非纸质）:&nbsp;</case>
+					<case value="2">普通发票（纸质）:&nbsp;</case>
+					</switch>
+					<switch name="order_info['invoicetype']"> 
+					<case value="1">&nbsp;个人</case>
+					<case value="2">&nbsp;单位:&nbsp;&nbsp;</case>
+					</switch>
+					{$order_info['invoicetitle']}
+					</p>
+				</div>
+				<div class="icon-box">
+					<i class="iconfont"></i>
+				</div>
+			</div>
+			<div class="xm-plain-box">
+				<div class="box-hd bank-title clearfix">
+					<div id="titleWrap" class="title-wrap">
+						<h2 class="title">选择支付方式</h2>
+						<span class="tip-tag"></span>
+					</div>
+				</div>
+				<div id="bankList" class="box-bd">
+					<div class="payment-bd">
+						<dl class="clearfix payment-box">
+							<dt>
+							<strong>支付平台</strong>
+							<p>手机等大额支付推荐使用支付宝快捷支付</p>
+							</dt>
+							<dd>
+								<ul class="payment-list clearfix">
+									<li>
+										<label for="micash">
+										<input id="micash" type="radio" value="alipay" name="payOnlineBan" checked="checked">
+										<img alt="" src="__PUBLIC__/Home/image/payOnline_zfb.gif">
+										</label>		
+									</li>
+									<li>
+										<label for="micash">
+										<input id="micash" type="radio" value="micash" name="payOnlineBank" >
+										<img alt="" src="__PUBLIC__/Home/image/micash.gif">
+										</label>
+										
+									</li>
+									<li style="padding-top:20px;">
+									<b>账户余额：{$money}</b>
+									</li>
+								</ul>
+							</dd>
+						</dl>
+						
+					</div>
+				</div>
+				<div class="box-ft clearfix">
+				<input id="payBtn" class="btn btn-primary" type="submit" value="下一步">
+				<a class="btn btn-lineDakeLight" href="javascript:history.back();">修改订单</a>
+				</div>
+			</div>
+		</form>
+	</div>
+	<!--内容结束-->
+</block>

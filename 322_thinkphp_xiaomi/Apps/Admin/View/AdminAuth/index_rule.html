@@ -1,0 +1,186 @@
+<extend name="add" />
+
+<block name="title">
+    <title>规则列表页</title>
+</block>
+
+<block name="css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/plugins/colorpicker/colorpicker.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/custom-plugins/picklist/picklist.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/plugins/select2/select2.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/plugins/ibutton/jquery.ibutton.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/plugins/cleditor/jquery.cleditor.css" media="screen">
+
+    <!-- Required Stylesheets -->
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/bootstrap/css/bootstrap.min.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/css/fonts/ptsans/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/css/fonts/icomoon/style.css" media="screen">
+
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/css/mws-style.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/css/icons/icol16.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/css/icons/icol32.css" media="screen">
+
+    <!-- Demo Stylesheet -->
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/css/demo.css" media="screen">
+
+    <!-- jQuery-UI Stylesheet -->
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/jui/css/jquery.ui.all.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/jui/jquery-ui.custom.css" media="screen">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/css/mws-theme.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/css/themer.css" media="screen">
+    <style type="text/css">
+    thead{
+        color: #333;
+        font-family: 'PT Sans';
+        font-size: 13px;
+        line-height: 20px;
+    }
+    tbody{
+        color: #333;
+        font-family: 'PT Sans';
+        font-size: 13px;
+        line-height: 20px;
+    }
+    </style>
+</block>
+
+<block name="js">
+    <!-- JavaScript Plugins -->
+    <script src="__PUBLIC__/Admin/js/libs/jquery-1.8.3.min.js"></script>
+    <script src="__PUBLIC__/Admin/js/libs/jquery.mousewheel.min.js"></script>
+    <script src="__PUBLIC__/Admin/js/libs/jquery.placeholder.min.js"></script>
+    <script src="__PUBLIC__/Admin/custom-plugins/fileinput.js"></script>
+    
+    <!-- jQuery-UI Dependent Scripts -->
+    <script src="__PUBLIC__/Admin/jui/js/jquery-ui-1.9.2.min.js"></script>
+    <script src="__PUBLIC__/Admin/jui/jquery-ui.custom.min.js"></script>
+    <script src="__PUBLIC__/Admin/jui/js/jquery.ui.touch-punch.js"></script>
+
+    <script src="__PUBLIC__/Admin/jui/js/globalize/globalize.js"></script>
+    <script src="__PUBLIC__/Admin/jui/js/globalize/cultures/globalize.culture.en-US.js"></script>
+
+    <!-- Plugin Scripts -->
+    <script src="__PUBLIC__/Admin/custom-plugins/picklist/picklist.min.js"></script>
+    <script src="__PUBLIC__/Admin/plugins/autosize/jquery.autosize.min.js"></script>
+    <script src="__PUBLIC__/Admin/plugins/select2/select2.min.js"></script>
+    <script src="__PUBLIC__/Admin/plugins/colorpicker/colorpicker-min.js"></script>
+    <script src="__PUBLIC__/Admin/plugins/validate/jquery.validate-min.js"></script>
+    <script src="__PUBLIC__/Admin/plugins/ibutton/jquery.ibutton.min.js"></script>
+    <script src="__PUBLIC__/Admin/plugins/cleditor/jquery.cleditor.min.js"></script>
+    <script src="__PUBLIC__/Admin/plugins/cleditor/jquery.cleditor.table.min.js"></script>
+    <script src="__PUBLIC__/Admin/plugins/cleditor/jquery.cleditor.xhtml.min.js"></script>
+    <script src="__PUBLIC__/Admin/plugins/cleditor/jquery.cleditor.icon.min.js"></script>
+    <!-- Core Script -->
+    <script src="__PUBLIC__/Admin/bootstrap/js/bootstrap.min.js"></script>
+    <script src="__PUBLIC__/Admin/js/core/mws.js"></script>
+
+    <!-- Themer Script (Remove if not needed) -->
+    <script src="__PUBLIC__/Admin/js/core/themer.js"></script>
+
+    <!-- Demo Scripts (remove if not needed) -->
+    <script src="__PUBLIC__/Admin/js/demo/demo.formelements.js"></script>
+</block>
+
+<block name="con">
+    <div class="mws-panel grid_8">
+                    <div class="mws-panel-header">
+                        <span><i class="icon-table"></i>规则列表</span>
+                    </div>
+                    <div class="mws-panel-body no-padding">
+                        <div role="grid" class="dataTables_wrapper" id="DataTables_Table_1_wrapper">
+                            <form action="{:U('Admin/AdminAuth/index_rule')}" method="get">
+                            <div id="DataTables_Table_1_length" class="dataTables_length">
+                              <label>显示 
+                                <select name="num" size="1" aria-controls="DataTables_Table_1">
+                                    <option value="5" <eq name="num" value="5">selected="selected"</eq>>5</option>
+                                    <option value="10" <eq name="num" value="10">selected="selected"</eq>>10</option>
+                                    <option value="25" <eq name="num" value="25">selected="selected"</eq>>25</option>
+                                    <option <eq name="num" value="50">selected="selected"</eq>>50</option>
+                                    <option <eq name="num" value="100">selected="selected"</eq>>100</option>
+                                </select> 条数
+                              </label>
+                            </div>
+                            <div class="dataTables_filter" id="DataTables_Table_1_filter">
+                                <label>搜索: <input type="text" name="keywords" value="{$keywords}" aria-controls="DataTables_Table_1"><button class="btn" type="submit"><i class="icon-search"></i> </button></label>
+                            </div>
+                            </form>   
+                                <table class="mws-datatable-fn mws-table dataTable" id="DataTables_Table_1" aria-describedby="DataTables_Table_1_info" style="width:100%;padding=8px" >
+                            <thead>
+                                <tr role="row">
+                                    <th style="width: 50px;">ID</th>
+                                    <th style="width: 270px;">规则标识</th>
+                                    <th style="width: 220px;">规则名称</th>
+                                    <th style="width: 70px;">认证方式</th>
+                                    <th style="width: 60px;">状态</th>
+                                    <th style="width: 150px;">规则表达式</th>
+                                    <th style="width: 130px;">操作</th>
+                                </tr>
+                            </thead>
+                            
+                            <tbody role="alert" aria-live="polite" aria-relevant="all">
+                            <foreach name='ruleInfo' item='vo'>
+                                <tr>
+                                    <td align="center">{$vo['id']}</td>
+                                    <td>{$vo['name']}</td>
+                                    <td>{$vo['title']}</td>
+                                    <td align="center">{$vo['type'] ? "实时认证" : "登录认证"}</td>
+                                    <td align="center">{$vo['status'] ? "启用" : "禁用"}</td>
+                                    <td>{$vo['condition']}</td>
+                                    
+                                    <td class=" " align="center"><a class="btn btn-small" href="{:U('Admin/AdminAuth/edit_rule', array('id'=>$vo['id']))}"><i class="icon-pencil"></i></a> <a class="btn btn-small" href="{:U('Admin/AdminAuth/delete_rule', array('id'=>$vo['id']))}"><i class="icon-trash"></i></a></td>
+                                </tr>
+                            </foreach>
+                            </tbody>
+
+                        </table>
+
+
+                        <div class="dataTables_info" id="DataTables_Table_1_info">显示 <elt name="start" value="$count">{$start}<else/>{$count}</elt> 到 
+                        <elt name="end" value="$count">{$end}<else/>{$count}</elt>  总共 {$count} 条数据</div>
+                            <div class="dataTables_paginate paging_full_numbers" id="DataTables_Table_1_paginate">
+                        <style type="text/css">
+                            .mws-panel{margin-top:10px;}
+                            .pages a{ background-color: #444444;
+                            border-left: 1px solid rgba(255, 255, 255, 0.15);
+                            border-right: 1px solid rgba(0, 0, 0, 0.5);
+                            box-shadow: 0 1px 0 rgba(0, 0, 0, 0.5), 0 1px 0 rgba(255, 255, 255, 0.15) inset;
+                            color: #fff;
+                            cursor: pointer;
+                            display: block;
+                            float: left;
+                            font-size: 12px;
+                            height: 20px;
+                            line-height: 20px;
+                            outline: medium none;
+                            padding: 0 10px;
+                            text-align: center;
+                            text-decoration: none;
+                            }
+                            .pages span{
+                                background-color: #88a9eb;
+                                background-image: none;
+                                border: medium none;
+                                box-shadow: 0 0 4px rgba(0, 0, 0, 0.25) inset;
+                                color: #323232;
+                                cursor: pointer;
+                                display: block;
+                                float: left;
+                                font-size: 12px;
+                                height: 20px;
+                                line-height: 20px;
+                                outline: medium none;
+                                padding: 0 10px;
+                                text-align: center;
+                                text-decoration: none;
+                            }
+                        </style>
+                                <div class="pages">
+                                    {$page}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+</block>

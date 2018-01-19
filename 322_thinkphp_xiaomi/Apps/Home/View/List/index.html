@@ -1,0 +1,300 @@
+<extend name="Index:index" />
+<block name="title">
+    <title><if condition="$title_current_one eq 1">搜索“{$title}”的结果——小米手机官网<else />{$twoNameChecked}——小米手机官网</if></title>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/base.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/base.min.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/goods-category.css">
+    <script type="text/javascript" src="__PUBLIC__/Home/js/jquery-1.8.3.min.js"></script>
+    <style type="text/css">
+        #nav-category-section{display: none;}
+        .icon-stat{display:inline-block;*display:inline;*zoom:1;width:65px;height:14px;overflow:hidden;background-image:url("__PUBLIC__/Home/image/icon-stat.png");background-repeat:no-repeat}
+    </style>
+</block>
+<block name="content">
+    <!-- 分类导航开始 -->
+    <div class="container breadcrumbs">
+        <if condition="$length eq 1">
+            <script type="text/javascript">
+            $('.breadcrumbs').append($('<a href="{:U('Home/Index/index')}">首页</a>'));
+            $('.breadcrumbs').append($("<span class='sep'>/</span><span>{$pathValue[1]}</span>"));
+            </script>
+        <elseif condition="($length gt 1) and ($title_current_one neq 1)"/> 
+                <script type="text/javascript">
+                $('.breadcrumbs').append($('<a href="{:U('Home/Index/index')}">首页</a>'));
+
+                <for start="1" end="$length-1">
+                $('.breadcrumbs').append($("<span class='sep'>/</span><a href='{:U("Home/List/index",array("cid"=>$path[$i]))}'>{$pathValue[$i]}</a>"));
+                </for>  
+                //最后一个无连接 所有不放入循环
+                    $('.breadcrumbs').append($("<span class='sep'>/</span><span>{$pathValue[$length-1]}</span>"));
+                </script> 
+            <elseif condition="($length gt 1) and ($title_current_one eq 1)" />
+                <script type="text/javascript">
+                $('.breadcrumbs').append($('<a href="{:U('Home/Index/index')}">首页</a>'));
+                $('.breadcrumbs').append($("<span class='sep'>/</span><a href=''>{$pathValue[1]}</a>"));
+                $('.breadcrumbs').append($("<span class='sep'>/</span><span>{$pathValue[2]}</span>"));
+                </script> 
+        </if>
+    </div>
+    <!-- 分类导航结束 -->
+    <!-- 分类 与 价格检索区 瀑布流 -->
+    <div class="container">
+        <!-- 分类检索区开始 -->
+        <div class="xm-line-box filter-box">
+            <div class="box-hd">
+                <h3 class="title"><if condition="$title_current_one eq 1">搜索“{$title}”的结果<else />{$pathValue[1]}</if></h3>
+            </div>
+            <div class="box-bd">
+                <div class="filter-lists">
+                    <dl class="xm-filter-list xm-filter-list-first category-filter-list clearfix">
+                        <dt>分类：</dt>
+                        <dd>
+                            <ul class="clearfix" id="typeCat">
+                                <li class="first "><a href="{:U('Home/List/index',array('g_all'=>'all','gid'=>$where['gid'],'cid'=>$where['cid'],'title'=>$where['title']))}">全部</a></li>
+                                <if condition="$two neq '' ">
+                                    <foreach name="two" item="vo" >    
+                                        <li><a href="{:U('Home/List/index',array('cid'=>$key))}">{$vo}</a></li>
+                                    </foreach>
+                                </if>
+                                <script type="text/javascript">
+                                        $('#typeCat li:contains("{$twoNameChecked}")').addClass('current');      
+                                </script>
+                            </ul>
+                            
+                        </dd>
+                    </dl>
+                    <!-- 只有插线板、移动电源与电池类才显示此dl -->
+                    <!-- <dl class="xm-filter-list  category-filter-list clearfix">
+                        <dt>机型：</dt>
+                        <dd>
+                            <ul class="clearfix" id="typeAdapt">
+                                <li class="first current"><a href="" onclick="">全部</a></li>
+                                <li><a rel="nofollow" href="" onclick="">小米手机2/2S</a></li>
+                                <li><a rel="nofollow" href="" onclick="">红米手机</a></li>
+                                <li><a rel="nofollow" href="" onclick="">红米手机2</a></li>
+                                <li><a rel="nofollow" href="" onclick="">红米2A</a></li>
+                            </ul>
+                        </dd>
+                    </dl> -->
+                </div>
+            </div>
+        </div>
+        <!-- 分类检索区结束 -->   
+        <div class="xm-line-box goods-list-box">
+            <!-- 排序检索区开始 -->
+            <div class="box-hd">
+                <div class="filter-lists">
+                    <dl class="xm-filter-list xm-filter-list-first category-filter-list clearfix">
+                        <dd>
+                            <ul class="clearfix" id="typeOrder">
+                                <li class="{$recomend} first"><a rel="nofollow" href="{:U('Home/List/index',array('recomend'=>1,'gid'=>$where['gid'],'cid'=>$where['cid'],'title'=>$where['title'],'g_all'=>$where['g_all']))}">推荐</a></li>
+                                <li class="{$new}"><a rel="nofollow" href="{:U('Home/List/index',array('new'=>'gid','gid'=>$where['gid'],'cid'=>$where['cid'],'title'=>$where['title'],'g_all'=>$where['g_all']))}">最新</a></li>
+                                <li class="{$up}"><a rel="nofollow" href="{:U('Home/List/index',array('up'=>'nowprice','gid'=>$where['gid'],'cid'=>$where['cid'],'title'=>$where['title'],'g_all'=>$where['g_all']))}">价格从高到低</a></li>
+                                <li class="{$down}"><a rel="nofollow" href="{:U('Home/List/index',array('down'=>'nowprice','gid'=>$where['gid'],'cid'=>$where['cid'],'title'=>$where['title'],'g_all'=>$where['g_all']))}">价格从低到高</a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="more">
+                    <div class="filter-stock">
+                        <a><i class="icon-check iconfont {$discount_checked}"></i>仅显示特惠商品</a>&nbsp;&nbsp;
+                        <a><i class="icon-check iconfont {$num_checked}"></i>仅显示有货商品</a>
+                    </div>
+                    <script type="text/javascript"> 
+                        var discount = $('.filter-stock').children('a').eq(0).children().attr('class');
+                        var num = $('.filter-stock').children('a').eq(1).children().attr('class');
+                        $('.filter-stock').children('a').eq(0).mouseover().css('cursor','pointer').click(function(){
+                            if(discount =='icon-check iconfont '){
+                                $(this).children().addClass('icon-checked');
+                                if(num=='icon-check iconfont ')
+                                location.href="{:U('Home/List/index',array('discount_checked'=>1,'num_checked'=>0,'gid'=>$where['gid'],'cid'=>$where['cid'],'title'=>$where['title'],'g_all'=>$where['g_all'],'new'=>$where['new'],'up'=>$where['up'],'down'=>$where['down']))}"; 
+                                else
+                                location.href="{:U('Home/List/index',array('discount_checked'=>1,'num_checked'=>1,'gid'=>$where['gid'],'cid'=>$where['cid'],'title'=>$where['title'],'g_all'=>$where['g_all'],'new'=>$where['new'],'up'=>$where['up'],'down'=>$where['down']))}";
+                            }else{
+                                $(this).children().removeClass('icon-checked'); 
+                                if(num=='icon-check iconfont ')
+                                location.href="{:U('Home/List/index',array('discount_checked'=>0,'num_checked'=>0,'gid'=>$where['gid'],'cid'=>$where['cid'],'title'=>$where['title'],'g_all'=>$where['g_all'],'new'=>$where['new'],'up'=>$where['up'],'down'=>$where['down']))}"; 
+                                else
+                                location.href="{:U('Home/List/index',array('discount_checked'=>0,'num_checked'=>1,'gid'=>$where['gid'],'cid'=>$where['cid'],'title'=>$where['title'],'g_all'=>$where['g_all'],'new'=>$where['new'],'up'=>$where['up'],'down'=>$where['down']))}";
+                            }
+                        });
+
+                        $('.filter-stock').children('a').eq(1).mouseover().css('cursor','pointer').click(function(){   
+                            if(num =='icon-check iconfont '){
+                                $(this).children().addClass('icon-checked');
+                                if(discount =='icon-check iconfont ')
+                                location.href="{:U('Home/List/index',array('num_checked'=>1,'discount_checked'=>0,'gid'=>$where['gid'],'cid'=>$where['cid'],'title'=>$where['title'],'g_all'=>$where['g_all'],'new'=>$where['new'],'up'=>$where['up'],'down'=>$where['down']))}"; 
+                                else
+                                location.href="{:U('Home/List/index',array('num_checked'=>1,'discount_checked'=>1,'gid'=>$where['gid'],'cid'=>$where['cid'],'title'=>$where['title'],'g_all'=>$where['g_all'],'new'=>$where['new'],'up'=>$where['up'],'down'=>$where['down']))}";
+                            }else{
+                                $(this).children().removeClass('icon-checked');
+                                if(discount =='icon-check iconfont ')
+                                location.href="{:U('Home/List/index',array('num_checked'=>0,'discount_checked'=>0,'gid'=>$where['gid'],'cid'=>$where['cid'],'title'=>$where['title'],'g_all'=>$where['g_all'],'new'=>$where['new'],'up'=>$where['up'],'down'=>$where['down']))}"; 
+                                else
+                                location.href="{:U('Home/List/index',array('num_checked'=>0,'discount_checked'=>1,'gid'=>$where['gid'],'cid'=>$where['cid'],'title'=>$where['title'],'g_all'=>$where['g_all'],'new'=>$where['new'],'up'=>$where['up'],'down'=>$where['down']))}";
+                            }
+                        });
+                    </script>
+                </div>
+            </div>
+            <!-- 排序检索区结束 -->
+            <!-- List瀑布流开始 -->
+            <div class="box-bd">
+                <!-- 没有符合条件的商品 -->                
+                <if condition="$infos == null">
+                    对不起，对应商品分类或筛选组合下没有商品
+                <else />
+                <!-- 存在符合条件的商品 -->    
+                    <div class="goods-list-section">
+                        <!-- 商品信息start -->
+                        <div class="xm-goods-list-wrap xm-goods-list-wrap-col20">
+                            <ul class="xm-goods-list clearfix">
+                                <foreach name="infos" item='vo'>
+                                    <li> 
+                                        <div class="xm-goods-item">
+                                            <b class="ggid" style="display:none">{$vo['gid']}</b>
+                                            <div class="item-thumb"> 
+                                                <a target="_blank" href="{:U('Home/Detail/index',array('gid'=>$vo['gid']))}">
+                                                    <img imgSrc="__PUBLIC__/Upload/Goods/{$vo['s_img'][0][0]}" alt="{$vo['title']}">
+                                                </a>
+                                            </div> 
+                                            <div class="item-info"> 
+                                                <h3 class="item-title"><a target="_blank" href="{:U('Home/Detail/index',array('gid'=>$vo['gid']))}">{$vo['title']} {$vo['colortit'][0]}</a></h3> 
+                                                <div class="item-price">{$vo['nowprice']}元   
+                                                    <span class="sep">|</span><del>{$vo['price']}元</del>  
+                                                </div> 
+                                                <div class="item-star"> 
+                                                    <span class="icon-stat icon-stat-5"></span>  
+                                                    <span class="item-comments">{$vo['comment']}人评价</span>  
+                                                </div> 
+                                                <div class="item-actions">
+                                                    <!-- 模拟隐藏域传值 -->
+                                                    <b class="gid" style="display:none">{$vo['gid']}</b>
+                                                    <b class="title" style="display:none">{$vo['title']}</b>
+                                                    <b class="colortit" style="display:none">{$vo['colortit'][0]}</b>
+                                                    <b class="zhupic" style="display:none">{$vo['s_img'][0][0]}</b>
+                                                    <b class="price" style="display:none">{$vo['price']}</b>
+                                                    <b class="nowprice" style="display:none">{$vo['nowprice']}</b>
+                                                    <b class="comment" style="display:none">{$vo['comment']}</b>  
+                                                    <a class="btn btn-small btn-primary" href="{:U('Home/Detail/index',array('gid'=>$vo['gid']))}"><i class="iconfont"></i>查看详情</a>
+                                                    <a class="btn btn-dake btn-small J_addFav like" href="{:U('Home/Like/index',array('gid'=>$vo['gid']))}" target="_blank"><i class="iconfont"></i>收藏</a> 
+                                                </div>
+                                                <div class="item-flag"> 
+                                                    <if condition="$vo['discount'] lt 9"> 
+                                                    <span class="icon-saleoff icon-saleoff-8">{$vo['discount']}折</span>   
+                                                    </if>
+                                                </div> 
+                                                <span class="hide">&nbsp;</span> <!-- Fix IE6 bug --> 
+                                            </div> 
+                                        </div> 
+                                    </li> 
+                                </foreach>
+                                <script type="text/javascript">
+
+                                </script>
+                            </ul>
+                        </div>
+                        <!-- 商品信息end -->
+                        <!-- 分页开始 -->
+                        <div class="xm-pagenavi">
+                            <div id="pages" style="margin-top:60px">{$page}  </div>
+                        </div>
+                        <!-- 分页结束 -->
+                    </div>
+                </if>
+            </div>
+            <!-- List瀑布流结束 -->
+        </div>     
+    </div>
+    <script type="text/javascript">
+    //分类导航显示控制
+        $(function(){
+            $('#J_categoryContainer').hover(function(){$('#nav-category-section').css('display','block');},
+                function(){$('#nav-category-section').css('display','none');})
+        })
+    //瀑布流控制代码
+        // $(window).live('scroll',function(){
+        //     load();
+        // })
+
+        $(window).scroll(function(){
+            load();
+        })
+
+        function load(){
+            $('.goods-list-section ul li img[isLoaded!=1]').each(function(){
+                // alert('aaaa');
+                var t = $(this).offset().top;
+                var wH = $(window).height();
+                var sH = $(window).scrollTop();
+                if(t <= wH+sH-150){
+                    var s = $(this).attr('imgSrc');
+                    $(this).attr('src',s);
+                    $(this).attr('isLoaded',1);
+                    $(this).slideDown(1000);
+                }
+            });
+        }
+        load();
+
+        $('#pages a,#pages span').addClass('numbers');
+        $('#pages a:first').addClass('first iconfont');
+        $('#pages a:last').addClass('last iconfont');
+    //缩放ajax函数
+        function suofang(w,h,src,element){
+            $(function(){
+                $.get("{:U('Home/List/suofang')}",{wsize:w,hsize:h,src:src},function(data){
+                    if(data[0]==220&&data[1]==220){
+                        return;
+                    }else{
+                        $(element).css({position:'absolute',left:'50%',top:'40%',marginLeft:'-'+data[0]/2+'px',marginTop:'-'+data[1]/2+'px',width:data[0],height:data[1]});
+                    }
+                    
+                })
+            })
+        }
+
+    //最近浏览
+        $('.item-title').click(function(){
+            var gid = $(this).parent().parent().find('.gid').text();
+            $.get("{:U('Home/Lastbrowse/add')}",{gid:gid})
+        })
+
+        $('.item-thumb img').click(function(){
+            var gid = $(this).parent().parent().parent().find('.gid').text()
+            $.get("{:U('Home/Lastbrowse/add')}",{gid:gid})
+        })
+    //收藏
+        $('.like').click(function(){
+            var uid = '{$uid}';
+            if(!uid){
+                alert('请先登录');
+                return false;
+            }else{
+                var uid = '{$uid}';
+                var mssid = '{$mssid}';
+                var mgid = $(this).parent().find('.gid').text();
+                var title = $(this).parent().find('.title').text();
+                var colortit = $(this).parent().find('.corlortit').text();
+                var zhupic = $(this).parent().find('.zhupic').text();
+                var price = $(this).parent().find('.price').text();
+                var nowprice = $(this).parent().find('.nowprice').text();
+                var comment = $(this).parent().find('.comment').text();
+                var t = $(this);
+                $.get("{:U('Home/Like/check')}",{mgid:mgid,uid:uid},function(data){
+                    if(data==1){
+                        alert('您已经收藏过此商品');
+                    }else if(data==0){
+                        $.get("{:U('Home/Like/insert')}",{uid:uid,mssid:mssid,mgid:mgid,title:title,zhupic:zhupic,colortit:colortit,price:price,nowprice:nowprice,comment:comment},function(){
+                            t.removeClass('btn-dake').addClass('btn-yellow is-fav');
+                            setTimeout(function(){
+                                t.removeClass('btn-yellow is-fav').addClass('btn-dake');
+                            },3000)
+                        })
+                    }
+                })
+                return false;
+            }
+        })
+    </script>
+</block>

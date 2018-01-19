@@ -1,0 +1,309 @@
+<extend name="Index:index" />
+<block name="title">
+    <title>个人中心</title>
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/base.css" type="text/css">
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/index.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/user-center.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/comment-add.css">
+    <script src="__PUBLIC__/Home/js/jquery-1.8.3.min.js" type="text/javascript"></script>
+    <style>
+        .site-header .site-logo .event-yeelight-2015{position:absolute;left:75px;top:-25px;z-index:2;width:165px;margin:0;height:108px;}
+        ul{margin:0px;padding:0px;}
+        li{list-style:none;}
+        .current{border:0px;}
+        .hide{display:none;}
+        .xm-edit-addr-box{
+            /*display:none;*/
+            position:relative;
+            background:#fff;
+            border:1px solid #ff4a00;
+            left: 323px;
+            top: 306px;
+            width: 300px;
+            z-index: 10;
+            /*z-index:1050*/
+        }
+        .rt{display:none;}
+        .uc-address-edit-section{
+            left: 343px;
+            position: absolute;
+            top: 306px;
+            width: 300px;
+            z-index: 10;
+        }
+        /*评星*/
+
+        .container .row .span14 .comment-main .goods-star .stars .icon-star-large {
+            text-indent: 0;
+        }
+        .icon-star-large-full {
+            background-position: 0 0;
+        }
+        .icon-star-large-blank {
+            background-position: -89px 0;
+        }
+        .icon-star-large {
+            background-image: url("__PUBLIC__/Home/image/xiaoxingxing.png");
+            background-repeat: no-repeat;
+            cursor: pointer;
+            display: inline-block;
+            height: 36px;
+            overflow: hidden;
+            text-indent: -9999em;
+            width: 37px;
+        }
+        /*短签边框*/
+        .active {
+            border: 1px solid #c3c3c3;
+            height: 38px;
+        }
+        /*对勾*/
+        .container .row .span14 .comment-main .goods-tags .tags .active .checkbox .iconfont.iconfont {
+            display: block;
+        }
+        .comment-content {
+            border: 1px solid #dfdfdf;
+            padding-left: 30px;
+            padding-right: 30px;
+            width: 1176px;
+        }
+
+    </style>
+</block>
+    
+<block name="content">
+
+<!-- 商品评价主体内容start -->
+
+
+    <!-- 商品评价小导航条start -->
+    <div class="container breadcrumbs">
+        <a href="" data-stat-id="83bfd8323dd7dea7">首页</a>
+        <span class="sep">/</span><span>商品评价</span>
+    </div>
+    <!-- 商品评价小导航条end -->
+
+    <!-- 商品评价内容start -->
+    <div class="container">
+        <div class="row">
+            <div class="span6">
+                <div class="goods">
+                    <img alt="" src="__PUBLIC__/Upload/Goods/{$imgs}"><br>
+                    <h2 class="title">{$titles}</h2>
+                    <div class="comment" comments="{$counts}">已有{$counts}评价</div>            
+                </div>
+            </div>
+            <div class="span14">
+                <div class="comment-main">
+                    <div class="goods-title">为“{$titles}”评个星吧</div>
+                    <div class="goods-star clearfix">
+                        <b class="name">评星：</b>
+                        <div class="stars J_comment_star">
+                            <span value="1" class="xings icon-star-large J_star icon-star-large-blank"></span>
+                            <span value="2" class="xings icon-star-large J_star icon-star-large-blank"></span>
+                            <span value="3" class="xings icon-star-large J_star icon-star-large-blank"></span>
+                            <span value="4" class="xings icon-star-large J_star icon-star-large-blank"></span>
+                            <span value="5" class="xings icon-star-large J_star icon-star-large-blank"></span>  
+                        </div>
+                        <div>
+                            <span style="display: none;" class="star_info hide J_mi_starInfo ">质量不太好</span>
+                            <span style="display: none;" class="star_info hide J_mi_starInfo ">商品一般般</span>
+                            <span style="display: none;" class="star_info hide J_mi_starInfo  ">其实还不错</span>
+                            <span style="display: none;" class="star_info hide J_mi_starInfo ">很喜欢，质量很好</span>
+                            <span style="display: none;" class="star_info hide J_mi_starInfo ">发烧品质，非常喜欢</span>
+                        </div>
+                    </div>
+                    <div class="goods-error hide J_star_error">
+                        &nbsp;<span class="">
+                            您还没有对商品评星哦～
+                        </span>
+                    </div>
+                    <div class="goods-tags clearfix">
+                        <b class="name">短签：</b>
+                        <ul class="tags clearfix J_comment_tags">
+                            <li label-id="20" class="tags_li" tag="性价比高">
+                                <span class="checkbox">
+                                    <i class="iconfont"></i>
+                                </span>
+                                <b>性价比高</b>
+                            </li>
+                            <li label-id="21" class="tags_li" tag="做工精良">
+                                <span class="checkbox">
+                                    <i class="iconfont"></i>
+                                </span>
+                                <b>做工精良</b>
+                            </li>
+                            <li label-id="22" class="tags_li" tag="方便操作">
+                                <span class="checkbox">
+                                    <i class="iconfont"></i>
+                                </span>
+                                <b>方便操作</b>
+                            </li>
+                            <li label-id="23" class="tags_li" tag="质量上等">
+                                <span class="checkbox">
+                                    <i class="iconfont"></i>
+                                </span>
+                                <b>质量上等</b>
+                            </li>
+                            <li label-id="24" class="tags_li"  tag="实惠实用">
+                                <span class="checkbox">
+                                    <i class="iconfont"></i>
+                                </span>
+                                <b>实惠实用</b>
+                            </li>
+                            <li label-id="25" class="tags_li" tag="物超所值">
+                                <span class="checkbox">
+                                    <i class="iconfont"></i>
+                                </span>
+                                <b>物超所值</b>
+                            </li>
+                            <li label-id="26" class="tags_li" tag="高大上">
+                                <span class="checkbox">
+                                    <i class="iconfont"></i>
+                                </span>
+                                <b>高大上</b>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="goods-comment clearfix">
+                        <b class="name">评价：</b>
+                        <textarea class="comment-textarea J_comment_textarea" style=" color: #6d6d6d;"></textarea>
+                    </div>
+                    <div class="goods-error hide J_comment_error">
+                        &nbsp;<span class="">
+                            亲，评价内容请大于10个字~
+                        </span>
+                    </div>
+                    <div class="goods-imgs clearfix">
+                        <div class="goods-imgs clearfix">
+                            <div id="J_pic_body" class="img-list clearfix ">
+                                <div class="J_pic_after after clearfix">
+                                    <div class="li"></div>
+                                    <div class="li"></div>
+                                    <div class="li"></div>
+                                    <div class="li"></div>
+                                    <div class="li"></div>
+                                </div>
+                            </div>
+                            <div class="sub-btn J_submit" style="margin-left:176px">
+                                提交
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 商品评价内容end -->
+    
+<!-- 商品评价主体内容end -->
+
+<script type="text/javascript">
+    //定义变量
+    var values = "";//评星等级
+    //小星星选项卡
+    $(function(){
+        var xing = $(".J_comment_star span");
+        // console.log(xing);
+        xing.click(function(){
+            //获取当前元素的属性value值(星数)
+            values = $(this).attr("value");
+            //获取当前元素在同辈元素中的索引值
+            var indexs = $(this).index();
+            // 循环设置当前元素之前同辈元素样式
+            var xh = $('span.xings');
+            // // 初始化样式
+            // xh.addClass("icon-star-large-blank");
+            // xh.removeClass("icon-star-large-full");
+            for(var i=0;i<(indexs+1);i++){
+                if(i<values){
+                    //添加class,设置星星变亮
+                    xh.eq(i).addClass("icon-star-large-full");
+                    xh.eq(i).removeClass("icon-star-large-blank");
+                }
+            }
+            //循环修改当前元素之后同辈元素的样式
+            for(var i=0;i<5;i++){
+                if(i>indexs){
+                    //添加class,设置星星变亮
+                    xh.eq(i).addClass("icon-star-large-blank");
+                    xh.eq(i).removeClass("icon-star-large-full");
+                }
+            }
+            //设置短评样式
+            $('span.J_mi_starInfo').eq(indexs).show().siblings().hide();
+        });
+    });
+
+    //短签选择
+    //获取标签元素
+    var tagsli = $('ul.tags li');
+    //定义接受遍历值的数组
+    var ar = [];
+    // var arr = [];
+    tagsli.each(function(i){
+        var oneself = $(this);
+        $(this).toggle(function(){
+            //选中短签
+            oneself.addClass('active');
+            ar[i] = oneself.attr('tag');
+        },function(){
+            //取消选中短签
+            oneself.removeClass('active');
+            ar[i] = undefined;
+        });
+    })
+    // for(var i in ar){
+    //     if(typeof(ar[i]) != 'undefined'){
+    //         arr.push(ar[i]);
+    //     }else{
+    //         continue;
+    //     }
+    // }
+        // <div class="comment" comments="{$counts}">已有{$counts}评价</div>  
+
+
+    //提交评论
+    var submit = $('div.J_submit');
+    submit.click(function(){
+        //接收商品gid号
+        var gid = {$gid};
+        //获取商品评价总数
+        var comment = $('div.comment').attr('comments');
+        //获取评论内容
+        var textareas = $('textarea').val();
+        //发送ajax请求
+        // $.post("{:U('Home/Appraise/insert')}",{gid:gid,com_star:values,label:ar,content:textareas,comment:comment},function(data){
+        //     if(data == "ok"){
+        //         location.href = "{:U('Home/Myappraise/index')}?gid="+gid;
+        //     }else{
+        //         // location.href = "{:U('Home/UserCenter/index')}";
+        //         location.href = "";
+        //     }
+        // });
+        $.ajax({
+            url:"{:U('Home/Appraise/insert')}",
+            data:{gid:gid,com_star:values,label:ar,content:textareas,comment:comment},
+            type:"POST",
+            success:function(data){
+                if(data == "ok"){
+                    location.href = "{:U('Home/Myappraise/index')}?gid="+gid;
+                }else{
+                    // location.href = "{:U('Home/UserCenter/index')}";
+                    location.href = "";
+                }
+            },
+            async:true
+        });
+    });
+
+
+
+
+
+
+</script>
+
+</block>
+
+

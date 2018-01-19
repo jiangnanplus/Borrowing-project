@@ -1,0 +1,104 @@
+<extend name="index_rule"/>//继承index_rule.html模板
+<block name="title">
+	<title>管理员属组列表页</title>
+</block>
+<block name="con">
+    <div class="mws-panel grid_8">
+                    <div class="mws-panel-header">
+                        <span><i class="icon-table"></i>规则列表</span>
+                    </div>
+                    <div class="mws-panel-body no-padding">
+                        <div role="grid" class="dataTables_wrapper" id="DataTables_Table_1_wrapper">
+                            <form action="{:U('Admin/AdminAuth/index_group_access')}" method="get">
+                                <div id="DataTables_Table_1_length" class="dataTables_length">
+                                  <label>显示 
+                                    <select name="num" size="1" aria-controls="DataTables_Table_1">
+                                        <option value="5" <eq name="num" value="5">selected="selected"</eq>>5</option>
+                                        <option value="10" <eq name="num" value="10">selected="selected"</eq>>10</option>
+                                        <option value="25" <eq name="num" value="25">selected="selected"</eq>>25</option>
+                                        <option <eq name="num" value="50">selected="selected"</eq>>50</option>
+                                        <option <eq name="num" value="100">selected="selected"</eq>>100</option>
+                                    </select> 条数
+                                  </label>
+                                </div>
+                                <div class="dataTables_filter" id="DataTables_Table_1_filter">
+                                    <label>搜索: <input type="text" name="keywords" value="{$keywords}" aria-controls="DataTables_Table_1"><button class="btn" type="submit"><i class="icon-search"></i> </button></label>
+                                </div>
+                            </form>   
+                                <table class="mws-datatable-fn mws-table dataTable" id="DataTables_Table_1" aria-describedby="DataTables_Table_1_info" style="width:100%;padding=8px" >
+                            <thead>
+                                <tr role="row">
+                                    <th style="width: 120px;">管理员ID</th>
+                                    <th style="width: 160px;">管理员姓名</th>
+                                    <th style="width: 200px;">员工编号</th>
+                                    <th style="width: 120px;">属组ID</th>
+                                    <th style="width: 130px;">操作</th>
+                                </tr>
+                            </thead>
+                            
+                            <tbody role="alert" aria-live="polite" aria-relevant="all">
+                            <foreach name='groupAccessInfo' item='vo'>
+                                <tr>
+                                    <td align="center">{$vo['uid']}</td>
+                                    <td align="center">{$vo['username']}</td>
+                                    <td align="center">{$vo['mid']}</td>
+                                    <td align="center">{$vo['group_id']}</td>
+                                    <eq name="vo['uid']" value="1">
+                                        <td class=" " align="center"><a class="btn btn-small" style="font-size:12px;font-family:microsoft yahei;">无权操作</a></td>
+                                    <else/>
+                                        <td class=" " align="center"><a class="btn btn-small" href="{:U('Admin/AdminAuth/edit_group_access', array('id'=>$vo['uid']))}"><i class="icon-pencil"></i></a> <a class="btn btn-small" href="{:U('Admin/AdminAuth/delete_group_access', array('uid'=>$vo['uid']))}"><i class="icon-trash"></i></a></td>
+                                    </eq>
+                                </tr>
+                            </foreach>
+                            </tbody>
+
+                        </table>
+
+
+                        <div class="dataTables_info" id="DataTables_Table_1_info">显示 <elt name="start" value="$count">{$start}<else/>{$count}</elt> 到 
+                        <elt name="end" value="$count">{$end}<else/>{$count}</elt>  总共 {$count} 条数据</div>
+                            <div class="dataTables_paginate paging_full_numbers" id="DataTables_Table_1_paginate">
+                        <style type="text/css">
+                        	.mws-panel{width:920px;margin-left:60px;margin-top:20px;}
+                            .pages a{ background-color: #444444;
+                            border-left: 1px solid rgba(255, 255, 255, 0.15);
+                            border-right: 1px solid rgba(0, 0, 0, 0.5);
+                            box-shadow: 0 1px 0 rgba(0, 0, 0, 0.5), 0 1px 0 rgba(255, 255, 255, 0.15) inset;
+                            color: #fff;
+                            cursor: pointer;
+                            display: block;
+                            float: left;
+                            font-size: 12px;
+                            height: 20px;
+                            line-height: 20px;
+                            outline: medium none;
+                            padding: 0 10px;
+                            text-align: center;
+                            text-decoration: none;
+                            }
+                            .pages span{
+                                background-color: #88a9eb;
+                                background-image: none;
+                                border: medium none;
+                                box-shadow: 0 0 4px rgba(0, 0, 0, 0.25) inset;
+                                color: #323232;
+                                cursor: pointer;
+                                display: block;
+                                float: left;
+                                font-size: 12px;
+                                height: 20px;
+                                line-height: 20px;
+                                outline: medium none;
+                                padding: 0 10px;
+                                text-align: center;
+                                text-decoration: none;
+                            }
+                        </style>
+                                <div class="pages">
+                                    {$page}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+</block>

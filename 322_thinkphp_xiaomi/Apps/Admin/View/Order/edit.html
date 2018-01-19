@@ -1,0 +1,150 @@
+<extend name="Admin/add" />
+<block name="title">
+    <title>订单详情</title>
+    <!-- <link rel="stylesheet" href="__PUBLIC__/Home/css/base.css" type="text/css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/checkOut.css"> -->
+</block>
+<block name="con">
+	<div class="mws-panel grid_8">
+    	<div class="mws-panel-header">
+        	<span>订单详情</span>
+        </div>
+        <div class="mws-panel-body no-padding">
+        	<form class="mws-form" action="{:U('Admin/Admin/update')}" method="post">
+        		<div class="mws-form-inline">
+        			<div class="mws-form-row">
+        				<label class="mws-form-label">订单号码</label>
+        				<div class="mws-form-item">
+        					{$info['onumber']}
+        				</div>
+        			</div>
+                    <div class="mws-form-row">
+                        <label class="mws-form-label">订单状态</label>
+                        <div class="mws-form-item"><switch name="info['status']">
+                                <case value="0">未支付</case>
+                                <case value="1">待发货</case>
+                                <case value="2">已发货</case>
+                                <case value="3">交易完成</case>
+                                <default />已关闭
+                            </switch></div>
+                    </div>
+                    <div class="mws-form-row">
+                        <label class="mws-form-label">商品信息</label>
+                        <table style="text-align:center">
+                            <tr role="row">
+                                <td style="width: 221px;">商品名称</td>
+                                <td style="width: 100px;">单品价格</td>
+                                <td style="width: 100px;">优惠价格</td>
+                                <td style="width: 100px;">购买数量</td>
+                                <td style="width: 100px;">小计</td>
+                            </tr>
+                            <foreach name="ginfo" item="vo" >
+                            <tr class="<if condition="$key%2 eq 1 ">odd<else />even</if>">
+                                <td class="  sorting_1">{$vo['title']}</td>
+                                <td class=" ">{$vo['price']}</td>
+                                <td class=" ">{$vo['nowprice']}</td>
+                                <td class=" ">{$vo['number']}</td>
+                                <td class=" ">{$vo['xiaoji']}</td>
+                            </tr>
+                            </foreach>
+                        </table>
+                    </div>
+        			<div class="mws-form-row">
+        				<label class="mws-form-label">订单总价</label>
+        				<div class="mws-form-item">
+        					{$info['money']}
+        				</div>
+        			</div>
+                    <div class="mws-form-row">
+                        <label class="mws-form-label">收货人</label>
+                        <div class="mws-form-item">
+                            {$info['consignee']}
+                        </div>
+                    </div>
+                    <div class="mws-form-row">
+                        <label class="mws-form-label">联系电话</label>
+                        <div class="mws-form-item">
+                            {$info['telephone']}
+                        </div>
+                    </div>
+                    <div class="mws-form-row">
+                        <label class="mws-form-label">收货地址</label>
+                        <div class="mws-form-item">
+                            {$arr[$info['province']]}{$info['site']}{$info['tag']}
+                        </div>
+                    </div>
+                    <div class="mws-form-row">
+                        <label class="mws-form-label">邮编</label>
+                        <div class="mws-form-item">
+                            {$info['zipcode']}
+                        </div>
+                    </div>
+                    <div class="mws-form-row">
+                        <label class="mws-form-label">下单时间</label>
+                        <div class="mws-form-item">
+                            {:date('Y-m-d H:i:s',$info['otime'])}
+                        </div>
+                    </div>
+                    <div class="mws-form-row">
+                        <label class="mws-form-label">支付方式</label>
+                        <div class="mws-form-item">
+                            <if condition="$info['paymethod'] eq 1 ">在线支付</if>
+
+                        </div>
+                    </div>
+                    <div class="mws-form-row">
+                        <label class="mws-form-label">配送方式</label>
+                        <div class="mws-form-item">
+                            <if condition="$info['postmethod'] eq 1 ">快递配送</if>
+                        </div>
+                    </div>
+                    <div class="mws-form-row">
+                        <label class="mws-form-label">配送时间</label>
+                        <div class="mws-form-item">
+                            <switch name="info['posttime']">
+                                <case value="1">不限送货时间</case>
+                                <case value="2">工作日送货</case>
+                                <case value="3">双休日,假日送货</case>
+                            </switch>
+                        </div>
+                    </div>
+                    <div class="mws-form-row">
+                        <label class="mws-form-label">发票信息</label>
+                        <div class="mws-form-item">
+                            <switch name="info['invoice']">
+                                <case value="1">电子发票(非纸质)</case>
+                                <case value="2">普通发票(纸质)</case>
+                            </switch>
+                            <switch name="info['invoicetype']">
+                                <case value="1">&nbsp;&nbsp;&nbsp;个人</case>
+                                <case value="2">&nbsp;&nbsp;&nbsp;单位: &nbsp;&nbsp;&nbsp;{$info['invoicetitle']}</case>
+                            </switch>
+                        </div>
+                    </div>
+        		</div>
+        	</form>
+        </div>    	
+    </div>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            var t = $('label:contains("订单状态")').next();
+            var v = t.html();
+            var o = {$info['oid']};
+            // alert(o);
+            // alert(v);
+            // console.log(v);
+            if(v == '待发货'){
+                $('<div id="fahuo" style="width:100px;height:20px;line-height:5px;text-align:center;position:relative;left:270px;top:-22px;border:1px solid #FF4A00;color:#FF4A00;cursor:pointer;">点击发货</div>').insertAfter(t);
+                $('#fahuo').click(function(){
+                    $.get('{:U('Admin/Order/post')}',{status:2,oid:o},function(data){
+                        if(data == 1){
+                            t.html('已发货');
+                            t.next().remove();
+                        }
+                    });
+                });
+            }
+        })
+    </script>
+</block>

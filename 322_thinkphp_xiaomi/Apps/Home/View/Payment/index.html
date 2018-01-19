@@ -1,0 +1,63 @@
+<extend name="Index:index" />
+{//title及样式表的引用}
+<block name="title">
+	<title>订单完成</title>
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/base.css" type="text/css">
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/buyConfirm.css" type="text/css">
+</block>
+
+{//头部的引用}
+<block name="logo">
+	<!--logo-->
+	<div class="site-header site-mini-header container">
+		<div class="span4">
+			<div class="site-logo">
+			<a class="logo " title="小米官网" href="{:U('Home/Index/index')}">
+			</a>
+			</div>
+		</div>
+	</div>
+	<!--logo-->
+</block>
+
+{//内容引入}
+<block name="content">
+	<!--内容开始-->
+	<div class="container payment-con">
+		<form id="pay-form" method="post" action="#" target="_blank">
+			<div class="order-info">
+				<div class="msg">
+					<h3>付款成功，我们将尽快为你发货,也请你注意查收快递信息！</h3>
+					<p></p>
+				</div>
+				<div class="info">
+					<p>
+					您已成功付款
+					<span class="pay-total">{$order_total_money|number_format="2"}元</span>
+					</p>
+					<p> 订单号为：{$order_no} 感谢您对小米的支持，我们一定会做的更好！！！</p>
+					<!--
+					<p>
+					配送：王学文
+					<span class="line">/</span>
+					180****5097
+					<span class="line">/</span>
+					北京,北京市,昌平区 文化西路育荣教育园区兄弟连楼
+					<span class="line">/</span>
+					不限送货时间
+					<span class="line">/</span>
+					个人电子发票
+					</p>-->
+				</div>
+				<div class="icon-box">
+					<i class="iconfont"></i>
+				</div>
+				<div class="box-ft clearfix" style="padding-top:100px">
+				<a class="btn btn-lineDakeLight" href="{:U('Home/List/index')}">继续逛逛>></a>
+				</div>
+			</div>
+			
+		</form>
+	</div>
+	<!--内容结束-->
+</block>

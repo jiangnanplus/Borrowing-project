@@ -1,0 +1,62 @@
+<extend name="User/add"/>
+<block name="title">
+    <title>订单回复</title>
+</block>
+ <block name="con">
+            	<div class="mws-panel grid_8">
+                	<div class="mws-panel-header">
+                    	<span>订单回复</span>
+                    </div>
+                    <div class="mws-panel-body no-padding">
+                    	<form class="mws-form" action="{:U('Admin/Comment/update')}" method="post">
+                    		<div class="mws-form-inline">
+                                <div class="mws-form-row">
+                                    <div class="phone">
+                                        <label class="mws-form-label" style="width:80px;margin-left:60px">评论人 :</label>
+                                        <div class="mws-form-item">
+                                            {$commentInfo['name']}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mws-form-row">
+                                    <label class="mws-form-label" style="width:80px;margin-left:60px">评论时间 :</label>
+                                    <div class="mws-form-item">
+                                            {:date('Y-m-d H:i:s',$commentInfo['comment_time'])}
+                                    </div>
+                                </div>
+                                <div class="mws-form-row">
+                                    <label class="mws-form-label" style="width:80px;margin-left:60px">评价商品 :</label>
+                                    <div class="mws-form-item">
+                                        {$commentInfo['title']}
+                                    </div>
+                                </div>
+                                <div class="mws-form-row">
+                                    <label class="mws-form-label" style="width:80px;margin-left:60px">评价内容 :</label>
+                                    <div class="mws-form-item">
+                                        {$commentInfo['content']}
+                                    </div>
+                                </div>
+                                <div class="mws-form-row">
+                                    <label class="mws-form-label" style="width:80px;margin-left:60px">评论分数 :</label>
+                                    <div class="mws-form-item">
+                                        {$commentInfo['com_star']}
+                                    </div>
+                                </div>
+                               
+                                <div class="mws-form-row">
+                                    <label class="mws-form-label" style="width:80px;margin-left:60px">回复评价 :</label>
+                                    <div class="mws-form-item">
+                                        <textarea name="recontent" rows="10" cols="50" resize=none>{$commentInfo['recontent']}</textarea>
+                                        小米官方对买家评价的回复
+                                    </div>
+                                </div>
+                    		</div>
+                    		<div class="mws-button-row">
+                                <input type="hidden" name="id" value="{$commentInfo['id']}">
+                    			<input type="submit" value="修改" class="btn btn-danger" style="margin-left:60px">
+                    			<input type="reset" value="重置" class="btn ">
+                    		</div>
+                    	</form>
+                    </div>    	
+                </div>
+            </block>

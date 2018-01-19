@@ -1,0 +1,136 @@
+<extend name="Goodsclass/add" />
+<block name="title">
+	<title>商品列表</title>
+	<style type="text/css">
+        #pages a{ background-color: #444444;
+            border-left: 1px solid rgba(255, 255, 255, 0.15);
+            border-right: 1px solid rgba(0, 0, 0, 0.5);
+            box-shadow: 0 1px 0 rgba(0, 0, 0, 0.5), 0 1px 0 rgba(255, 255, 255, 0.15) inset;
+            color: #fff;
+            cursor: pointer;
+            display: block;
+            float: left;
+            font-size: 12px;
+            height: 20px;
+            line-height: 20px;
+            outline: medium none;
+            padding: 0 10px;
+            text-align: center;
+            text-decoration: none;
+        }
+        #pages span{
+            background-color: #88a9eb;
+            background-image: none;
+            border: medium none;
+            box-shadow: 0 0 4px rgba(0, 0, 0, 0.25) inset;
+            color: #323232;
+            cursor: pointer;
+            display: block;
+            float: left;
+            font-size: 12px;
+            height: 20px;
+            line-height: 20px;
+            outline: medium none;
+            padding: 0 10px;
+            text-align: center;
+            text-decoration: none;
+        }
+    </style>
+</block>
+<block name="con">
+	<div class="mws-panel grid_8">
+    	<div class="mws-panel-header">
+        	<span><i class="icon-table"></i> 商品列表</span>
+        </div>
+        <div class="mws-panel-body no-padding">
+        <form action="{:U('Admin/Goods/index')}" method="get">
+            <div role="grid" class="dataTables_wrapper" id="DataTables_Table_1_wrapper">
+            	<div id="DataTables_Table_1_length" class="dataTables_length">
+            		<label>每页 <select name="num" size="1" aria-controls="DataTables_Table_1">
+	            			<option value="5" <eq name="num" value="5">selected="selected"</eq>>5</option>
+	            			<option value="10" <eq name="num" value="10">selected="selected"</eq>>10</option>
+	            			<option value="15" <eq name="num" value="15">selected="selected"</eq>>15</option>
+	            			<option value="20" <eq name="num" value="20">selected="selected"</eq>>20</option>
+            			</select> 条数据
+            		</label>
+            		<script type="text/javascript">
+            			$('select[name=num]').change(function(){
+            				$('form').submit();
+            			});
+            		</script>
+            	</div>
+            	<div class="dataTables_filter" id="DataTables_Table_1_filter">
+            		<label>搜索: 
+            			<input type="text" aria-controls="DataTables_Table_1" name="keywords" value="{$keywords}">
+            			<span class="btn-group">
+                            <button class="btn" type="submit"><i class="icon-search"></i></button>
+                        </span>
+                    </label>
+            	</div>
+            	<table class="mws-datatable-fn mws-table dataTable" id="DataTables_Table_1" aria-describedby="DataTables_Table_1_info">
+	                <thead>
+	                    <tr role="row">
+	                    	<th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" style="width: 167px;" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">ID
+	                    	</th>
+	                    	<th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" style="width: 199px;" aria-label="Browser: activate to sort column ascending">标题
+	                    	</th>
+	                    	<th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" style="width: 184px;" aria-label="Platform(s): activate to sort column ascending">主图
+	                    	</th>
+	                    	<th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" style="width: 184px;" aria-label="Platform(s): activate to sort column ascending">分类
+	                    	</th>
+	                    	<th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" style="width: 184px;" aria-label="Platform(s): activate to sort column ascending">价格
+	                    	</th>
+	                    	<th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" style="width: 184px;" aria-label="Platform(s): activate to sort column ascending">折扣
+	                    	</th>
+	                    	<th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" style="width: 184px;" aria-label="Platform(s): activate to sort column ascending">颜色
+	                    	</th>
+	                    	<th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" style="width: 184px;" aria-label="Platform(s): activate to sort column ascending">尺码
+	                    	</th>
+	                    	<th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" style="width: 184px;" aria-label="Platform(s): activate to sort column ascending">库存
+	                    	</th>
+	                    	<th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" style="width: 106px;" aria-label="CSS grade: activate to sort column ascending">操作
+	                    	</th>
+	                    </tr>
+	                </thead>
+                
+		            <tbody role="alert" aria-live="polite" aria-relevant="all"  style="text-align:center;width:100%">
+		            	<foreach name="infos" item="vo">
+		            		<tr class="odd">
+		                        <td class="  sorting_1">{$vo['gid']}</td>
+		                        <td class=" ">{$vo['title']}</td>
+		                        <td class=" "><img style="width:30px;height:30px" src="__PUBLIC__/Upload/Goods/{$vo['s_img'][0][0]}"></td>
+		                        <td class=" " style="text-align:left">{$path[$key]}</td>
+		                        <td class=" ">{$vo['price']}</td>
+		                        <td class=" ">{$vo['discount']}</td>
+		                        <td class=" ">{$vo['colortit']}</td>
+		                        <td class=" "><if condition="$vo['mcid'] eq 31">{$vo['size']}<else/>无</if></td>
+		                        <td class=" ">{$vo['num']}</td>
+		                        <td class=" ">
+                                    <span class="btn-group">
+                                        <a class="btn btn-small" href="{:U('Admin/Goods/edit',array('gid'=>$vo['gid']))}"><i class="icon-pencil"></i></a>
+                                        <a class="btn btn-small condelete" href="{:U('Admin/Goods/delete',array('gid'=>$vo['gid']))}"><i class="icon-trash"></i></a>
+                                    </span>
+                                </td>
+		                    </tr>
+		                </foreach>
+		            </tbody>
+           	    </table>
+	            <div class="dataTables_info" id="DataTables_Table_1_info">显示 {$start} 到 {$end} &nbsp;&nbsp;总共{$count}条数据</div>
+	            <div class="dataTables_paginate paging_full_numbers" id="DataTables_Table_1_paginate">
+	            	<div id="pages">
+	            		{$page}
+	            	</div>
+	            </div>
+    		</div>
+    	</div>
+    </div>
+    <script type="text/javascript">
+        $('.condelete').click(function(){
+           if(confirm('确定要删除吗?')){
+                return true;
+           }else{
+                return false;
+           }
+        })
+    </script>
+</block>

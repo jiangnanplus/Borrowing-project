@@ -1,0 +1,6 @@
+1、后台地址域名/index.php/admin   账号密码：admin admin
+2、安装：先导入xiaomi.sql文件 然后修改apps/common/conf/config.php 里面数据信息 即可
+
+
+
+##使用tp3.2实现的仿小米商城

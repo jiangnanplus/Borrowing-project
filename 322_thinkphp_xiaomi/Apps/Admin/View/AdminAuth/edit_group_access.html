@@ -1,0 +1,44 @@
+<extend name="AdminAuth:add" />
+<block name="title">
+	<title>属组修改</title>
+</block>
+<block name="con">
+    <!-- 属组修改start -->
+	<div class="mws-panel grid_8">
+        <div class="mws-panel-header">
+            <span>属组修改</span>
+        </div>
+        <div class="mws-panel-body no-padding">
+            <form class="mws-form" action="{:U('Admin/AdminAuth/update_group_access')}" method="post">
+                <div class="mws-form-inline">
+                    <div class="mws-form-row">
+                        <div class="phone">
+                            <label class="mws-form-label" style="width:80px;margin-left:60px">管理员姓名 :</label>
+                            <div class="mws-form-item">
+                                <span class="small">{$gpssInfo[0]['username']}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mws-form-row">
+                        <label class="mws-form-label" style="width:80px;margin-left:60px">员工编号 :</label>
+                        <div class="mws-form-item">
+                            <span class="small">{$gpssInfo[0]['mid']}</span>
+                        </div>
+                    </div>
+                    <div class="mws-form-row">
+                        <label class="mws-form-label" style="width:80px;margin-left:60px">属组ID :</label>
+                        <div class="mws-form-item">
+                            <input type="text" class="small" name="group_id" value="{$gpssInfo[0]['group_id']}">
+                        </div>
+                    </div>
+                </div>
+                <div class="mws-button-row">
+            		<input type="hidden" name="uid" value="{$gpssInfo[0]['uid']}">
+                    <input type="submit" value="修改" class="btn btn-danger" style="margin-left:60px">
+                    <input type="reset" value="重置" class="btn ">
+                </div>
+            </form>
+        </div>      
+    </div>
+    <!-- 属组修改end -->
+</block>
